@@ -6,7 +6,7 @@ dotenv.config({ // dot env configuration
 })
 
 dbConnect().then(()=>{
-      app.listen(`${process.env.PORT}` || 3000 ,()=>{
+      app.listen(`${process.env.PORT}` || 4000 ,()=>{
          console.log(`Server started at port ${process.env.PORT}`);
       })
 
