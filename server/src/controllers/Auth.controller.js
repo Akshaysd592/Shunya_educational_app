@@ -182,9 +182,62 @@ exports.sendotp = asyncHandler(async(req,res)=>{
       )
 })
 
+exports.changePassword = asyncHandler(async(req,res)=>{
+    
+
+// algorithm for changepassword
+// get id from req.user from middleware
+const userDetails = await User.findById(req.user.id);
+if(!userDetails){
+   throw new ApiError(400,"Can not change password ");
+} 
+
+// get old and new password 
+const {oldPassword, newPassword} = req.body;
+
+// check old password using bcrypt compare function
+const checkPassword = await bcrypt.compare(oldPassword,userDetails?.password);
+//  if not password matched return success false
+if(!checkPassword){
+   throw new ApiError(401,"Please check your Old password again");
+}
+// if matched then password hash 
+const newHashedPassword = await bcrypt.hash(newPassword,10);
+// user find and update password with hashed password
+const updatePassword = await User.findByIdandUpdate(
+   req?.user?.id,
+   {
+      password: newHashedPassword,
+   },
+   {
+      new: true,
+   }
+)
+
+// using trycatch now send mail using mailsender function
+try {
+   const mailSent = await mailSender(
+      updatePassword.email,
+      "Password for your account has been updated",
+      // password update template required
+      // passwordUpdated(
+          // updatedPassword.email,
+         //  `Password updated successfully for ${updatePassword.firstName} ${updatePassword.lastName}`
+      // )
+   )
+   console.log("Email sent successfully",mailSent.response);
+} catch (error) {//  catch for mail not send 
+   throw new ApiError(500,"Error occured while sending mail",error.message);
+}
 
 
+// return success response 
+return res.status(200).json(
+   new ApiResponse(200,"", "Password Updated Successfully")
+)
 
+
+})
 
 
 
