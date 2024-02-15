@@ -1,13 +1,13 @@
 import {asyncHandler} from '../utility/asyncHandler.js';
 import {ApiError} from '../utility/ApiError.js';
 import {ApiResponse} from '../utility/ApiResponse.js';
-import User from '../models/User.model.js'
-import OTP from '../models/OTP.model.js'
+import {User} from '../models/User.model.js'
+import {OTP}  from '../models/OTP.model.js'
 import bcrypt from 'bcrypt';
-import Profile from '../models/Profile.model.js'
+import {Profile} from '../models/Profile.model.js'
 import jwt from 'jsonwebtoken'
 import otpGenerator from 'otp-generator'
-import mailSender from '../utility/mailSender.js'
+import {mailSender}  from '../utility/mailSender.js'
 import dotenv from 'dotenv'
 
 dotenv.config({
@@ -16,7 +16,7 @@ dotenv.config({
 
 
 
-exports.signup = asyncHandler(async(req,res)=>{
+const signup = asyncHandler(async(req,res)=>{
      // destructuring data fields from req body
     const {
         firstName, 
@@ -94,7 +94,7 @@ exports.signup = asyncHandler(async(req,res)=>{
 
 
 // login controller for authentication of user 
-exports.login = asyncHandler(async(req,res)=>{
+const login = asyncHandler(async(req,res)=>{
      // algorithm 
      // get data from req.body
      const {email, password} = req.body;
@@ -143,7 +143,7 @@ exports.login = asyncHandler(async(req,res)=>{
 
 // OTP is send when user is signup 
 
-exports.sendotp = asyncHandler(async(req,res)=>{
+const sendotp = asyncHandler(async(req,res)=>{
    // get email from req.body
    const {email} = req.body;
 
@@ -182,7 +182,7 @@ exports.sendotp = asyncHandler(async(req,res)=>{
       )
 })
 
-exports.changePassword = asyncHandler(async(req,res)=>{
+const  changePassword = asyncHandler(async(req,res)=>{
     
 
 // algorithm for changepassword
@@ -242,6 +242,12 @@ return res.status(200).json(
 
 
 
+export {
+   signup,
+   login,
+    sendotp,
+   changePassword
+}
 
 
 

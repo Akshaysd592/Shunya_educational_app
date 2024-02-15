@@ -21,3 +21,5 @@ const RatingAndReviewSchema = new mongoose.Schema({
         index: true,
     },
 });
+
+export const RatingAndReview = mongoose.model("RatingAndReview",RatingAndReviewSchema);

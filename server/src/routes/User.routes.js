@@ -1,12 +1,13 @@
 import { Router } from "express";
-const router = Router();
 import {auth} from '../middleware/auth.middleware.js'
+const router = Router();
+
 
 import {
     signup,
     login,
     sendotp,
-    changePassword} from '../controllers/Auth.controller.js'
+    changePassword, } from '../controllers/Auth.controller.js'
 
 
 // Route for signup, login and authentication

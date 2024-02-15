@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import mailSender from '../utility/mailSender.js'
+import {mailSender} from '../utility/mailSender.js'
 // import email template 
 
 const OTPSchema = new mongoose.Schema({
@@ -53,4 +53,4 @@ OTPSchema.pre("save",async function(next){
 // export otp schema
 const OTP = mongoose.model("OTP",OTPSchema);
 
-module.exports = OTP ;
+export  {OTP} ; // can also export like this.

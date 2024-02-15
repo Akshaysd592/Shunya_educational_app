@@ -13,7 +13,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "server": "cd server && npm run dev",
+    "dev":"concurrently -n \"client,server\" -c \"bgBlue,bgGreen\" \"npm start\" \"npm run server\" "
   },
   "eslintConfig": {
     "extends": [
@@ -35,7 +37,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
+    "concurrently": "^8.2.2",
     "postcss": "^8.4.33",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1"
   }
 }

@@ -1,8 +1,8 @@
 
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv';
-import { asyncHandler } from '../utility/asyncHandler';
-import { ApiError } from '../utility/ApiError';
+import { asyncHandler } from '../utility/asyncHandler.js';
+import { ApiError } from '../utility/ApiError.js';
 import {User} from '../models/User.model.js'
 
 dotenv.config({
@@ -13,7 +13,7 @@ dotenv.config({
 
 //  algo for middleware auth
 // function is used to authenticate the user request
-exports.auth = asyncHandler(async(req,res,next)=>{
+export const auth = asyncHandler(async(req,res,next)=>{
 // trycatch 
 // getting token from cookies  , body, header
     const token = 
@@ -45,7 +45,7 @@ next(); //next() to make next function working in middleware
 // get userdetail using email
 // check for accountType 
 
-exports.isStudent = asyncHandler(async(req,res,next)=>{
+export const isStudent = asyncHandler(async(req,res,next)=>{
      const {email} = req.user.email;
      const userDetails = await User.findOne({email});
 
@@ -56,7 +56,7 @@ exports.isStudent = asyncHandler(async(req,res,next)=>{
 })
 
 // similarly for Instructor and admin check
-exports.isInstructor = asyncHandler(async(req,res,next)=>{
+export const isInstructor = asyncHandler(async(req,res,next)=>{
       const {email} = req.user.email; 
       // find the user details using email
       const userDetails = await User.findOne({email});
@@ -68,7 +68,7 @@ exports.isInstructor = asyncHandler(async(req,res,next)=>{
 })
 
 // similarly for Admin also 
-exports.isAdmin = asyncHandler(async (req,res,next)=>{
+export const isAdmin = asyncHandler(async (req,res,next)=>{
   const {email} = req.user.email;
   // find details of user using email
   const userDetails = await User.findOne({email});

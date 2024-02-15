@@ -2,6 +2,7 @@ import express from 'express'
 const app = express();
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import fileUpload from 'express-fileupload'
 
 // middlewares to be used 
 app.use(cors({
@@ -13,7 +14,11 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser());
 app.use(
-    fileUpload()
+    fileUpload({
+        useTempFiles : true,
+        tempFileDir : '/tmp/'
+    }
+    )
 )
 
 // import routes ?
