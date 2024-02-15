@@ -224,6 +224,7 @@ try {
           // updatedPassword.email,
          //  `Password updated successfully for ${updatePassword.firstName} ${updatePassword.lastName}`
       // )
+      "The work of password update is completed"
    )
    console.log("Email sent successfully",mailSent.response);
 } catch (error) {//  catch for mail not send 
