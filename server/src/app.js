@@ -3,6 +3,14 @@ const app = express();
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import fileUpload from 'express-fileupload'
+import cloudinayConnect from './config/cloudinary.config.js';
+// if required then import dotenv
+import dotenv from 'dotenv';
+dotenv.config(
+    {
+        path:'./.env'
+    }
+);
 
 // middlewares to be used 
 app.use(cors({
@@ -20,13 +28,16 @@ app.use(
     }
     )
 )
+// connecting  to cloudinary
+cloudinayConnect();
 
-// import routes ?
+
+// import routes 
 import healthcheckRoute from './routes/healthcheck.routes.js'
 import userRoutes  from './routes/User.routes.js'
 
 
-// routes declaration ?
+// routes declaration 
 app.use('/api/v1/healthcheck',healthcheckRoute);
 app.use('/api/v1/auth',userRoutes);
 export {app};
