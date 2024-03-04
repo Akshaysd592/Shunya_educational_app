@@ -3,7 +3,7 @@ const app = express();
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import fileUpload from 'express-fileupload'
-import cloudinayConnect from './config/cloudinary.config.js';
+import { cloudinaryConnect } from './config/cloudinary.config.js';
 // if required then import dotenv
 import dotenv from 'dotenv';
 dotenv.config(
@@ -29,7 +29,7 @@ app.use(
     )
 )
 // connecting  to cloudinary
-cloudinayConnect();
+cloudinaryConnect();
 
 
 // import routes 
