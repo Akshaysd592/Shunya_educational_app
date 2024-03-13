@@ -20,4 +20,4 @@ const courseProgressSchema = new mongoose.Schema({
 });
 
 
-export const courseProgress  = mongoose.model("courseProgress",courseProgressSchema);
+export const CourseProgress  = mongoose.model("courseProgress",courseProgressSchema);
