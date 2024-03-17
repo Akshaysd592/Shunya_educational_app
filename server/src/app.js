@@ -35,9 +35,14 @@ cloudinaryConnect();
 // import routes 
 import healthcheckRoute from './routes/healthcheck.routes.js'
 import userRoutes  from './routes/User.routes.js'
+import contactUsRoutes from './routes/Contact.routes.js'
+import profileRoutes from './routes/Profile.routes.js'
+import courseRoutes from './routes/Course.routes.js'
+import paymentRoutes from './routes/Payment.routes.js'
 
 
 // routes declaration 
 app.use('/api/v1/healthcheck',healthcheckRoute);
 app.use('/api/v1/auth',userRoutes);
+app.use('/api/v1',contactUs)
 export {app};

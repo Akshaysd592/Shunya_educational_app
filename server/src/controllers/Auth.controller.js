@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken'
 import otpGenerator from 'otp-generator'
 import {mailSender}  from '../utility/mailSender.js'
 import dotenv from 'dotenv'
+import {passwordUpdated} from '../mail/templates/passwordUpdate.js'
 
 dotenv.config({
    path:'./.env'
@@ -220,11 +221,11 @@ try {
       updatePassword.email,
       "Password for your account has been updated",
       // password update template required
-      // passwordUpdated(
-          // updatedPassword.email,
-         //  `Password updated successfully for ${updatePassword.firstName} ${updatePassword.lastName}`
-      // )
-      "The work of password update is completed"
+      passwordUpdated(
+          updatePassword.email,
+          `Password updated successfully for ${updatePassword.firstName} ${updatePassword.lastName}`
+      )
+      // "The work of password update is completed"
    )
    console.log("Email sent successfully",mailSent.response);
 } catch (error) {//  catch for mail not send 

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import {mailSender} from '../utility/mailSender.js'
 // import email template 
+import {otpTemplate} from '../mail/templates/emailVerificationEmail.js'
 
 const OTPSchema = new mongoose.Schema({
     email:{
@@ -28,7 +29,7 @@ async function sendVerificationEmail (email,otp){
         const mailResponse  = await mailSender(
             email,
             "Verification Email",
-            `This is the otp ${otp}, it will get expired after 5 minutes`// use mailtemplate here
+            otpTemplate(otp),
         )
         
     } catch (error) {

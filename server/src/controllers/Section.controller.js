@@ -7,7 +7,7 @@ import { asyncHandler } from '../utility/asyncHandler.js'
 
 
 
-const newSection = asyncHandler(async(req,res)=>{
+const createSection = asyncHandler(async(req,res)=>{
     // algo 
     //get section and courseid 
     // validate it
@@ -117,4 +117,4 @@ const deleteSection = asyncHandler(async(req,res)=>{
 })
 
 
-export {newSection,updateSection,deleteSection}
+export {createSection,updateSection,deleteSection}

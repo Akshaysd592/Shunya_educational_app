@@ -9,6 +9,10 @@ import {
     sendotp,
     changePassword, } from '../controllers/Auth.controller.js'
 
+import {
+ resetPasswordToken,
+ resetPassword
+} from '../controllers/ResetPassword.controller.js'
 
 // Route for signup, login and authentication
 //**************************
@@ -23,5 +27,8 @@ router.route('/login').post(login);
 router.route('/sendotp').post(sendotp);
 router.route('/changepassword').post(auth,changePassword) // can also give like this 
 
+
+router.route('/reset-password-token').post(resetPasswordToken);
+router.route('/reset-password').post(resetPassword)
 
 export default router;
