@@ -1,10 +1,10 @@
 
-import {asyncHandler} from '../utility/asyncHandler'
-import User from '../models/User.model.js'
+import {asyncHandler} from '../utility/asyncHandler.js'
+import {User} from '../models/User.model.js'
 import {ApiError} from '../utility/ApiError.js'
 import {ApiResponse} from '../utility/ApiResponse.js'
 import crypto from 'crypto'
-import mailSender from '../utility/mailSender.js'
+import {mailSender} from '../utility/mailSender.js'
 import bcrypt from 'bcrypt'
 
 

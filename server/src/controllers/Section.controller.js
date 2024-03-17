@@ -1,5 +1,5 @@
 import {Section} from '../models/Section.model.js'
-import {Course} from '../models/Section.model.js'
+import {Course} from '../models/Course.model.js'
 import {SubSection} from '../models/Subsection.model.js'
 import { ApiError } from '../utility/ApiError.js';
 import { ApiResponse } from '../utility/ApiResponse.js';

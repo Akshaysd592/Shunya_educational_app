@@ -5,7 +5,7 @@ import {User} from '../models/User.model.js'
 import {Category} from '../models/Category.model.js'
 import {Course} from '../models/Course.model.js'
 import uploadImageToCloudinary from '../utility/imageUploader.js'
-import { ApiResponse } from "../utility/ApiResponse";
+import { ApiResponse } from "../utility/ApiResponse.js";
 import {convertSecondsToDuration} from '../utility/secToDuration.js'
 import {CourseProgress} from '../models/CourseProgress.model.js' 
 import { SubSection } from "../models/Subsection.model.js";
@@ -179,7 +179,7 @@ const editCourse = asyncHandler(async(req,res)=>{
 
 })
 
-exports.getAllCourses = asyncHandler(async(req,res)=>{
+ const getAllCourses = asyncHandler(async(req,res)=>{
       const allCourses = await Course.find(
         {
             status: "Published"

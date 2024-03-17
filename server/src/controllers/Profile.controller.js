@@ -1,4 +1,4 @@
-import { asyncHandler } from "../utility/asyncHandler";
+import { asyncHandler } from "../utility/asyncHandler.js";
 import {User} from '../models/User.model.js'
 import {Profile} from '../models/Profile.model.js'
 import { ApiResponse } from "../utility/ApiResponse.js";
@@ -6,7 +6,7 @@ import {ApiError} from "../utility/ApiError.js"
 import mongoose from "mongoose";
 import {CourseProgress} from '../models/CourseProgress.model.js'
 import {Course} from '../models/Course.model.js'
-import {converSecondtoDuration} from '../utility/secToDuration.js'
+import {convertSecondsToDuration} from '../utility/secToDuration.js'
 
 const updateProfile = asyncHandler(async (req,res)=>{
     // get data from body
@@ -179,7 +179,7 @@ const getEnrolledCourses = asyncHandler(async(req,res)=>{
             .subSection.reduce((acc,curr)=> acc + parseInt(curr.timeDuration),0);
 
 
-            userDetails.courses[i].totalDuration = converSecondtoDuration(totalDurationInSeconds)
+            userDetails.courses[i].totalDuration = convertSecondsToDuration(totalDurationInSeconds)
 
             SubsectionLength += userDetails.courses[i].courseContent[j].subSection.length
          }

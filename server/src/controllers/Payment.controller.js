@@ -6,13 +6,13 @@ import {instance}  from '../config/razorpay.config.js'
 import mongoose from "mongoose";
 import { Course } from "../models/Course.model.js";
 import {User} from '../models/User.model.js';
-import { ApiError } from "../utility/ApiError";
-import { asyncHandler } from "../utility/asyncHandler";
+import { ApiError } from "../utility/ApiError.js";
+import { asyncHandler } from "../utility/asyncHandler.js";
 import { ApiResponse } from '../utility/ApiResponse.js';
 import crypto from 'crypto'
 import {  CourseProgress } from '../models/CourseProgress.model.js';
 import {mailSender} from '../utility/mailSender.js'
-import {courseEnrollementEmail} from '../mail/templates/courseEnrollmentEmail.js'
+import {courseEnrollmentEmail} from '../mail/templates/courseEnrollmentEmail.js'
 
 
 const capturePayment = asyncHandler(async(req,res)=>{

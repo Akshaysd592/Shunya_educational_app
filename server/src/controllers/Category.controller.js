@@ -48,7 +48,7 @@ const showAllCategories = asyncHandler(async(req,res)=>{
 })
 
 
-exports.categoryPageDetails = asyncHandler(async(req,res)=>{
+const categoryPageDetails = asyncHandler(async(req,res)=>{
     // algo
     // get categoryid 
     // get details of selected category

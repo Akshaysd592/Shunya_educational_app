@@ -1,9 +1,9 @@
 import { asyncHandler } from "../utility/asyncHandler.js";
 
-import Course from '../models/Course.model.js'
-import RatingAndReview from '../models/RatingandReview.model.js'
+import {Course} from '../models/Course.model.js'
+import {RatingAndReview} from '../models/RatingandReview.model.js'
 import { ApiError } from "../utility/ApiError.js";
-import { ApiResponse } from "../utility/ApiResponse";
+import { ApiResponse } from "../utility/ApiResponse.js";
 import mongoose from "mongoose";
 
 

@@ -1,7 +1,6 @@
-import cloudinary from 'cloudinary.v2';
+import {v2 as cloudinary} from 'cloudinary';
 
-
-exports.uploadImageToCloudinary = (file,folder,height , quality)=>{
+const uploadImageToCloudinary = (file,folder,height , quality)=>{
     const options = {folder};
     if(height){
         options.height = height;
@@ -15,3 +14,6 @@ exports.uploadImageToCloudinary = (file,folder,height , quality)=>{
     return cloudinary.uploader.upload(file.tempFilePath,options)
 
 }
+
+
+export default uploadImageToCloudinary;

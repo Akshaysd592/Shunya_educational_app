@@ -2,7 +2,7 @@
 import {SubSection} from '../models/Subsection.model.js'
 import {asyncHandler} from '../utility/asyncHandler.js'
 import {ApiError} from '../utility/ApiError.js'
-import { courseProgress } from '../models/CourseProgress.model.js';
+import { CourseProgress } from '../models/CourseProgress.model.js';
 import { ApiResponse } from '../utility/ApiResponse.js';
 
 
@@ -26,7 +26,7 @@ const updateCourseProgress = asyncHandler(async(req,res)=>{
         throw new ApiError(404,"Invalid Subsection")
     }
     // now find course and userid
-    const courseProgress = await courseProgress.findOne({
+    const courseProgress = await CourseProgress.findOne({
             courseID: courseId,
             userId: userId,
     })
