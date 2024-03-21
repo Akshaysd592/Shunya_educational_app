@@ -1,12 +1,16 @@
 
 import React, { useEffect, useState } from "react";
-import {AiOutLineMenu, AiOutlineShoppingCart} from 'react-icons/ai'
+import {AiOutlineMenu, AiOutlineShoppingCart} from 'react-icons/ai'
 import logo from '../../assets/Logo/Logo-Full-Light.png'
 import {NavbarLinks} from '../../data/navbar-links.js'
 import { Link, matchPath, useLocation } from "react-router-dom";
 import {BsChevronDown} from 'react-icons/bs'
+import {useSelector,useDispatch} from 'react-redux'
+import { apiConnector } from "../../services/apiConnector.js";
+import { categories } from "../../services/api.js";
 
 import {ACCOUNT_TYPE } from '../../utils/constants.js'
+import ProfileDropDown from "../core/Auth/ProfileDropDown.jsx";
 
 const Navbar = ()=>{
     const {token} = useSelector((state)=>state.auth);
@@ -114,7 +118,7 @@ const Navbar = ()=>{
 
                 </nav>
 
-            Login / signUp / Dashboard 
+            {/* Login / signUp / Dashboard  */}
             <div className="hidden items-center gap-x-4 md:flex">
             {
                 user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR &&    (
@@ -150,12 +154,12 @@ const Navbar = ()=>{
                 </Link>
             }
             {
-                token !== null && <ProfileDropdown/>
+                token !== null && <ProfileDropDown/>
             }
             </div>
             
             <button  className="mr-4 md:hidden">
-                <AiOutLineMenu fontSize={24} fill="#AFB2BF"/>
+                <AiOutlineMenu fontSize={24} fill="#AFB2BF"/>
             </button>
 
 
