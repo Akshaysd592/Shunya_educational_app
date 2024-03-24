@@ -24,18 +24,22 @@ const signup = asyncHandler(async(req,res)=>{
         lastName,
         email, 
         password,
-        confirmpassword,
+        confirmPassword,
         accountType,
         contactNumber, 
         otp,
     } = req.body;
 
      //validation 
-     if([firstName,lastName,email,password,confirmpassword,accountType,contactNumber,otp].some((field)=>(field.trime() === ""))){
-        throw new ApiError(403,"All fields are required");
-     }
+   //   if([firstName,lastName,email,password,confirmpassword,accountType,contactNumber,otp].some((field)=>(field.trim() === ""))){
+   //      throw new ApiError(403,"All fields are required");
+   //   }
+
+   if(!firstName || !lastName || !email || !password || !accountType || !otp){
+      throw new ApiError(403,"All Fields are required");
+   }
      // password and confirmpassword check 
-     if(password !== confirmpassword){
+     if(password !== confirmPassword){
         throw new ApiError(400,"Password and Confirmpassword not matched")
      }
      // check if user already exist
@@ -60,7 +64,7 @@ const signup = asyncHandler(async(req,res)=>{
 
 
      // create user approved
-     let approved = ""
+     let approved = true;
      (approved === "Instructor") ? (approved = false): (approved = true)
      // add additional profile details null 
     const profileUpdate = await Profile.create({
@@ -126,13 +130,13 @@ const login = asyncHandler(async(req,res)=>{
 
           //// then create cookie with options 
           const options = {
-            expires: new Date(Date.now() + 3 * 24 *  60 * 60 * 1000),
+            expires: new Date(Date.now() + 3 * 24 *  60 * 60 * 1000), // three days 
             httpOnly: true,
           }
          
           // return cookies with response 
           return res.cookie("token",token,options).status(200).json(
-            new ApiResponse(200, "User login success")
+            new ApiResponse(200,user, "User login success")
           )
      } 
      else{

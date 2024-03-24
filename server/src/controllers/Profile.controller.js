@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import {CourseProgress} from '../models/CourseProgress.model.js'
 import {Course} from '../models/Course.model.js'
 import {convertSecondsToDuration} from '../utility/secToDuration.js'
+import {uploadImageToCloudinary} from '../utility/imageUploader.js'
 
 const updateProfile = asyncHandler(async (req,res)=>{
     // get data from body
@@ -31,15 +32,17 @@ const updateProfile = asyncHandler(async (req,res)=>{
 
      const userDetails  = await User.findById(id);
 
-     const profile = await profile.findById(userDetails.additionalDetails);
+     const profile = await Profile.findById(userDetails.additionalDetails);
 
 
-     const user = await User.findByIdAndUpdate({id},{
-        firstName:firstname,
-        lastName : lastname,
-     })
-
-     await user.save();
+     if(firstname.trim() !== ""){
+        userDetails.firstName = firstname;
+     }
+     if(lastname.trim() !== ""){
+      userDetails.lastName = lastname;
+     }
+     
+     await userDetails.save();
 
      profile.dateOfBirth = dateOfBirth;
      profile.about = about;
@@ -51,7 +54,7 @@ const updateProfile = asyncHandler(async (req,res)=>{
 
      // find updated data 
      const updatedUser  = await User.findById(id)
-     .populate("additionalDetials")
+     .populate("additionalDetails")
      .exec();
 
      return res.status(200).json(
@@ -101,7 +104,7 @@ const getAllUserDetails = asyncHandler(async(req,res)=>{
       const id = req.user.id;
 
       const userDetails = await User.findById(id)
-      .populate("additionalDetials")
+      .populate("additionalDetails")
       .exec();
 
 

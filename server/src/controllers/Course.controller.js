@@ -4,7 +4,7 @@ import { ApiError } from "../utility/ApiError.js";
 import {User} from '../models/User.model.js'
 import {Category} from '../models/Category.model.js'
 import {Course} from '../models/Course.model.js'
-import uploadImageToCloudinary from '../utility/imageUploader.js'
+import {uploadImageToCloudinary} from '../utility/imageUploader.js'
 import { ApiResponse } from "../utility/ApiResponse.js";
 import {convertSecondsToDuration} from '../utility/secToDuration.js'
 import {CourseProgress} from '../models/CourseProgress.model.js' 

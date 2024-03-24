@@ -1,7 +1,7 @@
 //import neccessary modules
 import {Section} from '../models/Section.model.js'
 import {SubSection} from '../models/Subsection.model.js'
-import uploadImageToCloudinary from '../utility/imageUploader.js'
+import {uploadImageToCloudinary} from '../utility/imageUploader.js'
 import {asyncHandler} from '../utility/asyncHandler.js'
 import {ApiError} from '../utility/ApiError.js'
 import {ApiResponse} from '../utility/ApiResponse.js'

@@ -16,4 +16,4 @@ const uploadImageToCloudinary = (file,folder,height , quality)=>{
 }
 
 
-export default uploadImageToCloudinary;
+export  {uploadImageToCloudinary};

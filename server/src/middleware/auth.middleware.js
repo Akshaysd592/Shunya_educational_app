@@ -19,7 +19,7 @@ export const auth = asyncHandler(async(req,res,next)=>{
     const token = 
                 req.cookies.token ||
                 req.body.token ||
-                req.header("Authorization").replace("Bearer ","");
+                req.header("Authorization").replace("Bearer ",""); // inside the header token get automatically stored 
 // no token return error
   if(!token){
     throw new ApiError(401,"Token is missing");
