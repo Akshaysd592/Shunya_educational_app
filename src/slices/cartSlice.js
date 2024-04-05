@@ -65,10 +65,12 @@ const cartSlice = createSlice({
 
             }
         },
-        resetCart:(state)=>{
-            state.cart  = [],
-            state.total = 0,
+        resetCart:(state,actions)=>{
+            state.cart= [];
+            state.total = 0;
             state.totalItems = 0;
+
+         
 
             // update localStorage
             localStorage.removeItem("cart");

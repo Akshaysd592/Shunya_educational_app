@@ -76,7 +76,7 @@ const Navbar = ()=>{
                                         bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-500 group-hover:traslate-y-[1.65em] group-hover:opacity-100 lg:w-[300px] ">
                                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] traslate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"> </div>
                                         
-                                            loading? (<p className="text-center">Loading...</p>): subLinks?(
+                                         loading ? (<p className="text-center">Loading...</p>): subLinks?(
                                                 <>
                                                     {
                                                         subLinks?.filter((subLink)=> subLink?.courses?.length >0)?.map((subLink,i)=>{
@@ -95,7 +95,9 @@ const Navbar = ()=>{
                                                 </>
 
                                             )
-                                        
+                                          
+                                         
+
                                         </div>
 
                                         </div>

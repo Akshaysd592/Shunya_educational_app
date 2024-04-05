@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import Error from "./pages/Error";
 import Navbar from "./components/Common/Navbar";
 import About from "./pages/About";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   
@@ -14,7 +16,7 @@ function App() {
   return (
     <div className="flex min-h-screen w-screen flex-col  bg-richblack-900 font-inter">
       
-      {/* <Navbar/> */}
+      <Navbar/>
       <Routes>
              <Route
              path="/"
@@ -22,6 +24,14 @@ function App() {
              <Route
              path="/about"
              element={<About/>}
+             />
+             <Route
+              path="/login"
+              element={<Login/>}
+             />
+             <Route
+              path="/signup"
+              element={<SignUp/>}
              />
              <Route
              path="*"
